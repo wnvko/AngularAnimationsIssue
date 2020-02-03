@@ -55,5 +55,7 @@ export class AppComponent implements OnInit {
     ).subscribe(() => {
       this.animate();
     });
+
+    this.overlay.nativeElement.focus();
   }
 }
