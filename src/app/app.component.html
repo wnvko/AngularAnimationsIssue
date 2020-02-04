@@ -1,3 +1,4 @@
+<button style="position: absolute; z-index: 1;" (click)="animate()">Play animation via button click - does not break inline style</button>
 <div #overlay tabindex="0" style="
     display: flex;
     position: fixed;
@@ -9,6 +10,6 @@
     justify-content: center;
     align-items: center;">
   <div #wrapper style="position: relative;">
-    <div #content style="width: 600px; height: 400px; background-color: red;"></div>
+    <div #content style="width: 600px; height: 400px; background-color: red;">Press ESC key to start animation - breaks the inline style</div>
   </div>
 </div>

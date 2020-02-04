@@ -41,6 +41,7 @@ export class AppComponent implements OnInit {
     const builder = this.builder.build(fadeIn);
     let player = builder.create(this.content.nativeElement);
     player.onDone(() => {
+      this.overlay.nativeElement.focus();
       if (player) {
         player.reset();
         player = null;
