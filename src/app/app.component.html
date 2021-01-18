@@ -1,4 +1,10 @@
-<button style="position: absolute; z-index: 1;" (click)="animate()">Play animation via button click - does not break inline style</button>
+<div style="position: absolute; z-index: 1;">
+  <button (click)="animate()">Play animation via button click - does not break inline style</button>
+  <p>Animation has started initial value: {{ hasStartedInitial }}</p>
+  <p>Animation has started after call to play: {{ hasStartedAfterCallToPlay }}</p>
+  <p>Animation has started on animation end: {{ hasStartedOnAnimationEnd }}</p>
+  <p>Animation has started after call to reset: {{ hasStartedAfterCallToReset }}</p>
+</div>
 <div #overlay tabindex="0" style="
     display: flex;
     position: fixed;

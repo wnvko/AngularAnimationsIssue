@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { AnimationBuilder, AnimationReferenceMetadata, AnimationMetadata, style, animate, animation } from '@angular/animations';
+import { animate, animation, AnimationBuilder, AnimationMetadata, AnimationReferenceMetadata, style } from '@angular/animations';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { fromEvent } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
@@ -9,6 +9,11 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+
+  public hasStartedInitial = false;
+  public hasStartedAfterCallToPlay = false;
+  public hasStartedOnAnimationEnd = false;
+  public hasStartedAfterCallToReset = false;
 
   constructor(private builder: AnimationBuilder) { }
 
@@ -43,13 +48,14 @@ export class AppComponent implements OnInit {
     player.onDone(() => {
       this.overlay.nativeElement.focus();
       if (player) {
-        console.log('Before reset call player is hasStarted: ', player.hasStarted());
+        this.hasStartedOnAnimationEnd = player.hasStarted();
         player.reset();
-        console.log('After reset call player is hasStarted: ', player.hasStarted());
+        this.hasStartedAfterCallToReset = player.hasStarted();
         player = null;
       }
     });
     player.play();
+    this.hasStartedAfterCallToPlay = player.hasStarted();
   }
 
   ngOnInit(): void {
