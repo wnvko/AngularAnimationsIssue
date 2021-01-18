@@ -43,7 +43,9 @@ export class AppComponent implements OnInit {
     player.onDone(() => {
       this.overlay.nativeElement.focus();
       if (player) {
+        console.log('Before reset call player is hasStarted: ', player.hasStarted());
         player.reset();
+        console.log('After reset call player is hasStarted: ', player.hasStarted());
         player = null;
       }
     });
